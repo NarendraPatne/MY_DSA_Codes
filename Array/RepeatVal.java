@@ -1,0 +1,20 @@
+public class RepeatVal {
+    public static boolean RepVal(int arr[])
+    {
+        for(int i=0;i<arr.length;i++)
+        {
+            for(int j=i+1;j<arr.length;j++)
+            {
+                if(arr[i]==arr[j])
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+    public static void main(String[] args) {
+        int arr[]={3,5,7,4,5,4};
+        System.out.print(RepVal(arr));
+    }
+}
