@@ -39,7 +39,9 @@ public class Lst {
         ls.add(4);
         int arr[]={2,3,2,3,5};
         // ls.set(2, 23);
-        freqCnt(arr);
+        // freqCnt(arr);
         // System.out.println(frequencyCount(arr));
+        System.out.println(ls.get(4));
+        System.out.println(ls.size());
     }
 }
