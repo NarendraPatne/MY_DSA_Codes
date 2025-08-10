@@ -161,6 +161,7 @@ public class Linkedlist {
         prev.next=prev.next.next;
         return;
     }
+
     public static void main(String[] args) {
         Linkedlist ll=new Linkedlist();
         ll.addFirst(1);

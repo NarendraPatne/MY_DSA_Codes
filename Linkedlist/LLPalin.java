@@ -1,8 +1,8 @@
 public class LLPalin {
-     public class Node{
+     public static class Node{
         int data;
         Node next;
-        public Node(int data){
+         Node(int data){
             this.data=data;
             this.next=null;
         }
@@ -87,7 +87,7 @@ public class LLPalin {
         size--;
         return val;
     }
-    public void printLL()
+    public static void printLL()
     {
         if(head==null){
             System.out.println("Linked List is Empty");
@@ -176,13 +176,55 @@ public class LLPalin {
         }
         return true;
     }
+    public static boolean isCycleExist(Node head){
+        Node slow=head;
+        Node fast=head;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(slow==fast){
+                return true;
+            }
+        }
+        return false;
+    }
+    public static void removeCycle(Node head){
+        // Detect cycle
+        Node slow=head;
+        Node fast=head;
+        boolean cycle=false;
+        while(fast!=null && fast.next!=null){
+            slow=slow.next;
+            fast=fast.next.next;
+            if(fast==slow){
+                cycle=true;
+                break;
+            }
+        }
+        if(cycle==false)
+            return;
+        // Find meeting Point
+        slow=head;
+        Node prev=null;
+        while(slow!=fast){
+            prev=fast;
+            slow=slow.next;
+            fast=fast.next;
+        }
+        // Remove Cycle
+        prev.next=null;
+    }
     public static void main(String[] args) {
-        LLPalin ll=new LLPalin();
-        ll.addLast(1);
-        ll.addLast(2);
-        // ll.addLast(2);
-        ll.addLast(2);
-        ll.printLL();
-        System.out.println(ll.isLLPalindrome(head));
+ 
+        head=new Node(1);
+        head.next=new Node(2);
+        Node temp=new Node(25);
+        head.next.next=temp;
+        temp.next=new Node(3);
+        temp.next.next=temp;
+        System.out.println(isCycleExist(head));
+        removeCycle(head);
+        System.out.println(isCycleExist(head));
+        printLL();
     }
 }
