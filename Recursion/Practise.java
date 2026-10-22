@@ -150,6 +150,26 @@ public class Practise{
             stringPermutations(a, mainStr.substring(1));
         }
     }
+    public static String []mappings={"","","abc","def","ghi","jkl","mno","pqrs","tuv","wxyz"};
+    public static void keypadCombinations(String digits,String ans,int index)
+    {
+        // Base case
+        if(index>=digits.length())
+        {
+            System.out.println(ans);
+            return;
+        }
+        // loop through all the chars at each digit index in the mapping array
+        int dind=Integer.parseInt(digits.charAt(index)+"");
+        String curr=mappings[dind];
+        for(int i=0;i<curr.length();i++)
+        {
+            ans+=curr.charAt(i);
+            keypadCombinations(digits, ans, index+1);
+            // backtrack remove the element after printing for next recursion use
+            ans=ans.substring(0,ans.length()-1);
+        }
+    }
     public static void arrPermutations(int arr[],int ind)
     {
         if(ind>=arr.length)
@@ -195,6 +215,7 @@ public class Practise{
         // int arr[]={1,2,3,4};
         // printASubseq(arr, list, 0);
         // arrPermutations(arr, 0);
-        stringPermutations("", "abc");
+        // stringPermutations("", "abc");
+        keypadCombinations("234", "", 0);
     }
 }
