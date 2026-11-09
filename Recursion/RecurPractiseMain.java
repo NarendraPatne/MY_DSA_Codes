@@ -1,5 +1,5 @@
 import java.util.*;
-public class Practise{
+public class RecurPractiseMain{
     // Print 1 to n using recursion
     public static void printN(int n)
     {
